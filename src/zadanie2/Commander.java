@@ -45,21 +45,17 @@ public class Commander {
 	}
 	
 	public static String readPathMenu() {
-		boolean inLoop = true;
-		String path;
 		
-		while (inLoop) {
+		while (true) {
 			int choice = scanner.scanSelectionList("\nType:\n1 - to type path\n2 - to return", 1, 2);
 			
 			if (choice == 1) {
-				path = scanner.scanString("Type path (e.g. C:\\Windows) and press ENTER:");
+				return scanner.scanString("Type path (e.g. C:\\Windows) and press ENTER:");
 			}
 
 			else if (choice == 2) {
-				path = null;
-				inLoop = false;
+				return null;
 			}
 		}
-		return path;
 	}
 }
