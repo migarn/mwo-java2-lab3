@@ -25,7 +25,7 @@ public class Commander {
 			} else if (choice == 3) {
 				// files view with extension
 			} else if (choice == 4) {
-				// files tree
+				treeView();
 			} else {
 				System.out.println("\nApplication terminated.");
 				inLoop = false;
@@ -53,6 +53,19 @@ public class Commander {
 			try {
 				System.out.println("\nDetailed view of " + path + ":\n");
 				fileViewer.printFilesDetails(path);
+			} catch (Exception e) {
+				System.out.println("Path not found");
+			}
+		}
+	}
+	
+	public static void treeView() {
+		String path = readPathMenu();
+
+		if (path != null) {
+			try {
+				System.out.println("\nTree view of " + path + ":\n");
+				fileViewer.printTree(path);
 			} catch (Exception e) {
 				System.out.println("Path not found");
 			}

@@ -34,7 +34,7 @@ public class Main {
 		File folder = new File(path);
 		File[] listOfFiles = folder.listFiles();
 
-		System.out.println(threeColumnsFormatter("nazwa pliku", "DIR lub rozmiar w bajtach", "data stworzenia") + "\n");
+		System.out.println(threeColumnsFormatter("FILENAME", "DIR OR SIZE IN BYTES", "CREATION TIME") + "\n");
 
 		for (File file : listOfFiles) {
 			BasicFileAttributes basicFileAttributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
