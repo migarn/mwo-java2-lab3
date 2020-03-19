@@ -41,6 +41,20 @@ public class Commander {
 	}
 	
 	public static boolean simpleView() {
+		String path = readPathMenu();
+		
+		if (path == null) {
+			return false;
+		}
+		else {
+			try {
+				fileViewer.printFilesSimple(path);
+				return false;
+			} catch (Exception e) {
+				System.out.println("Path not found");
+				return false;
+			}
+		}
 		
 	}
 	
