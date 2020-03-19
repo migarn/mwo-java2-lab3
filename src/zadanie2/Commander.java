@@ -1,7 +1,10 @@
 package zadanie2;
 
+import cwiczenie4.Main;
+
 public class Commander {
 	private static UserScanner scanner = new UserScanner();
+	private static Main fileViewer = new Main();
 	
 	public static void main(String args[]) {
 		mainMenu();
@@ -19,7 +22,7 @@ public class Commander {
 			int choice = scanner.scanSelectionList(instruction, 1, 2, 3, 4, 5);
 			
 			if (choice == 1) {
-				//simple files view
+				simpleView();
 			}
 			else if (choice == 2) {
 				//detailed files view
@@ -35,5 +38,28 @@ public class Commander {
 				inLoop = false;
 			}
 		}
+	}
+	
+	public static boolean simpleView() {
+		
+	}
+	
+	public static String readPathMenu() {
+		boolean inLoop = true;
+		String path;
+		
+		while (inLoop) {
+			int choice = scanner.scanSelectionList("\nType:\n1 - to type path\n2 - to return", 1, 2);
+			
+			if (choice == 1) {
+				path = scanner.scanString("Type path (e.g. C:\\Windows) and press ENTER:");
+			}
+
+			else if (choice == 2) {
+				path = null;
+				inLoop = false;
+			}
+		}
+		return path;
 	}
 }
