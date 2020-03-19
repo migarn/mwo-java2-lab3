@@ -23,7 +23,7 @@ public class Commander {
 			} else if (choice == 2) {
 				detailedView();
 			} else if (choice == 3) {
-				// files view with extension
+				specificExtensionView();
 			} else if (choice == 4) {
 				treeView();
 			} else {
@@ -59,6 +59,20 @@ public class Commander {
 		}
 	}
 	
+	public static void specificExtensionView() {
+		String path = readPathMenu();
+		String extension = readExtension();
+
+		if (path != null && extension != null) {
+			try {
+				System.out.println("\nList of ." + extension + " files in " + path + ":\n");
+				fileViewer.printFiles(path, "." + extension);
+			} catch (Exception e) {
+				System.out.println("Path not found");
+			}
+		}
+	}
+	
 	public static void treeView() {
 		String path = readPathMenu();
 
@@ -79,6 +93,21 @@ public class Commander {
 
 			if (choice == 1) {
 				return scanner.scanString("\nType path (e.g. C:\\\\Windows) and press ENTER:");
+			}
+
+			else if (choice == 2) {
+				return null;
+			}
+		}
+	}
+	
+	public static String readExtension() {
+
+		while (true) {
+			int choice = scanner.scanSelectionList("\nType:\n1 - to type extension\n2 - to return", 1, 2);
+
+			if (choice == 1) {
+				return scanner.scanString("\nType extension (e.g. txt) and press ENTER:");
 			}
 
 			else if (choice == 2) {
