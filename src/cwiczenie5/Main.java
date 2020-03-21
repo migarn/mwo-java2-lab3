@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class Main {
 
@@ -12,10 +13,10 @@ public class Main {
 		
 		
 		Bureau bureau = initBureau();
-//		printBureau(bureau);
+		printBureau(bureau);
 		saveBureau(bureau, "mi6.ser");
 		Bureau loadedBureau = loadBureau("mi6.ser");
-//		printBureau(loadedBureau);
+		printBureau(loadedBureau);
 		
 	}
 
@@ -59,7 +60,16 @@ public class Main {
 	}
 	
 	private static void printBureau(Bureau bureau) {
-		// to be implemented
+		System.out.println("\nBureau name: " + bureau.getName() + "\n");
+		List<Agent> agents = bureau.getAgents();
+		
+		for (Agent agent : agents) {
+			System.out.println("Agent " + agent.getName() + " " + agent.getSurname() + " " + agent.getNumber());
+			List<Task> tasks = agent.getTasks();
+			System.out.println("Tasks:");
+			for (Task task : tasks) {
+				System.out.println(task.getName());
+			}
+		}
 	}
-
 }
