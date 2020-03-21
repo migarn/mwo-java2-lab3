@@ -21,6 +21,7 @@ public class Main {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(bureau);
 			out.close();
 			fileOut.close();
 			
