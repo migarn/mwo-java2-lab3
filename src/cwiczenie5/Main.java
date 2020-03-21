@@ -1,20 +1,32 @@
 package cwiczenie5;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Main {
 
 	public static void main(String args[]) throws Exception {
 		
-		/*
+		
 		Bureau bureau = initBureau();
-		printBureau(bureau);
+//		printBureau(bureau);
 		saveBureau(bureau, "mi6.ser");
-		Bureau loadedBureau = loadBureau("mi6.ser");
-		printBureau(loadedBureau);
-		*/
+//		Bureau loadedBureau = loadBureau("mi6.ser");
+//		printBureau(loadedBureau);
+		
 	}
 
 	private static void saveBureau(Bureau bureau, String filename) throws Exception {
-		// to be implemented
+		try {
+			FileOutputStream fileOut = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.close();
+			fileOut.close();
+			
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 	}
 
 	private static Bureau loadBureau(String filename) throws Exception {
