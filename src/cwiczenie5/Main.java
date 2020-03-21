@@ -1,7 +1,9 @@
 package cwiczenie5;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
 		Bureau bureau = initBureau();
 //		printBureau(bureau);
 		saveBureau(bureau, "mi6.ser");
-//		Bureau loadedBureau = loadBureau("mi6.ser");
+		Bureau loadedBureau = loadBureau("mi6.ser");
 //		printBureau(loadedBureau);
 		
 	}
@@ -31,7 +33,17 @@ public class Main {
 	}
 
 	private static Bureau loadBureau(String filename) throws Exception {
-		// to be implemented
+		 try {
+			FileInputStream fileIn = new FileInputStream(filename);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			Bureau bureau = (Bureau) in.readObject();
+			in.close();
+			fileIn.close();
+			return bureau;
+			
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 		return null;
 	}
 
