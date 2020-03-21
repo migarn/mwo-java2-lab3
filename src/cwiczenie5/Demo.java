@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class Demo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		  try {
 		         FileOutputStream fileOut =
 		         new FileOutputStream("res/cwiczenie5/dane.ser");
@@ -20,19 +20,19 @@ public class Demo {
 		    } catch(IOException i) {
 		         i.printStackTrace();
 		    }
-		
-		
-		
-		
-//		try {
-//			FileInputStream fileIn = new FileInputStream("res/cwiczenie5/dane.ser");
-//			ObjectInputStream in = new ObjectInputStream(fileIn);
-////			in.writeObject(x);
-//			in.close();
-//			fileIn.close();
-//		} catch (IOException i) {
-//			i.printStackTrace();
-//		}
+				
+		try {
+			FileInputStream fileIn = new FileInputStream("res/cwiczenie5/dane.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			
+			System.out.println(in.readObject());
+			System.out.println(in.readObject());
+
+			in.close();
+			fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 
 	}
 
